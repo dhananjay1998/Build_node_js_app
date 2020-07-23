@@ -1,0 +1,7 @@
+{
+    "moduleFileExtensions":[
+       "js",
+       "json"
+    ],
+    "testRegex":".test.js$"
+ }

@@ -1,0 +1,330 @@
+<!doctype html>
+<html>
+    <head>
+         <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+     <style>
+            /*signup form */
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+        </style>
+
+    <style>
+
+<style>
+
+
+#navbar {
+overflow: hidden;
+background-color: #333;
+}
+
+/* Navbar links */
+#navbar a {
+float: left;
+display: block;
+color: #f2f2f2;
+text-align: center;
+padding: 14px;
+text-decoration: none;
+}
+
+/* Page content */
+.content {
+padding: 16px;
+}
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+position: fixed;
+top: 0;
+width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+padding-top: 60px;
+}
+
+
+* {
+box-sizing: border-box;
+}
+
+body {
+font-family: Arial, Helvetica, sans-serif;
+margin :auto 100px;
+}
+
+/* Float four columns side by side */
+.column {
+float: left;
+width: 25%;
+padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
+.card {
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+padding: 16px;
+text-align: left;
+background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+.column {
+width: 100%;
+display: block;
+margin-bottom: 20px;
+}
+}
+
+/* BOX BUTTONS  */
+.block {
+display: block;
+width: 100%;
+border: none;
+background-color: #4CAF50;
+padding: 14px 28px;
+font-size: 16px;
+cursor: pointer;
+text-align: center;
+}
+.card-img{
+object-fit:cover;
+width: 1840px;
+height: 200px;
+
+}
+
+</style>
+    </style>
+
+
+
+
+
+
+
+    </head>
+
+    <body>
+      <button type="button" class="btn btn-primary btn-lg btn-block" ><a href="./index.html"><h1>See Your Registered Events</h1></a></button>
+
+      <form style="border:1px solid #ccc" id="format1">
+        <div class="container">
+            <h1>Add your interest</h1>
+            
+  
+        
+                <br>
+                <label><b>interest type</b></label>
+                <input type="text" id="interesttype1" placeholder="Enter your interest" name="interesttype1" >
+  
+                <label><b>interest subtype</b></label>
+                <input type="text" id= "interestsubtype" placeholder="Enter you subtype interest" name="interestsubtype" >
+        
+                <div class="clearfix">
+                        <button type="button" class="seevnts" onclick="senddatas();" value="see your events">see events</button>
+                </div>
+        </div>
+  </form>
+        <form style="border:1px solid #ccc" id ="format">
+            <div class="container" >
+                <h1>Find your events</h1>
+                <p>Please fill in this form to register for event</p>
+
+                   
+                    <br>
+                    <label><b>interest type</b></label>
+                    <input type="text" id="interesttype" placeholder="Enter your interest" name="interesttype" >
+                   
+                    <label><b>city</b></label>
+                    <input type="text" id= "city" placeholder="Enter you city" name="city" >
+
+                    <div class="clearfix">
+                            <button type="button" class="seevnts" onclick="sendData();" value="see your events">see events</button>
+                    </div>
+            </div>
+    </form>
+    
+
+
+     <div id="xyz"></div>
+    <div class="row" id="r1">
+
+    </div>
+    <script>
+     function sendData(){
+      console.log('hello');
+        //    const userid = parseInt(document.getElementById('userid').value);
+            const location = document.getElementById('city').value;
+            const interests = document.getElementById('interesttype').value;
+            console.log(location)
+            console.log(interests)
+  
+            
+        var data = "";
+
+            var xhr = new XMLHttpRequest();
+            //xhr.withCredentials = true;
+
+            xhr.addEventListener("readystatechange", function() {
+              if(this.readyState === 4) {
+                
+
+              
+                var tag = document.createElement("h1");
+              var text = document.createTextNode("Your Events");
+              tag.appendChild(text);
+              document.getElementById("xyz").appendChild(tag);
+
+
+
+
+                var k= (JSON.parse(this.responseText));
+              //console.log(k);   
+
+              for(var i=0; i<k.length;i++){
+                  var li=document.createElement('div');
+                  li.className='column';
+                  url = "./dance.jpeg"
+                  var iiid = k[i].id;
+                 var idstr =  String(iiid);
+                 console.log(typeof(idstr),idstr);
+                  li.innerHTML=`<div class ="card" id="card1">
+                                      <img src=`+url+` alt="Smiley face" height="200" width="400">
+                                      
+                                      <p>
+                                            Hostname: `+k[i].hostname+`<br>
+                                      
+                                            Eventname: `+k[i].eventname+`<br>
+                                            Event fee: `+k[i].fee+`
+                                      </p>
+                                      <a href="./register.html?`+idstr+`" type="button" class="block">
+                                Register for the event
+                                </a>
+                                  </div>`;
+                  var list = document.getElementById("r1");
+                  list.insertBefore(li, list.childNodes[0]);
+                  }             
+               document.getElementById("format").remove();
+               document.getElementById("format1").remove();
+              }
+            });
+            const urll = "http://localhost:3013/cityinterest?cityname="+location+"&interest="+interests;
+            console.log(urll)
+            xhr.open("GET", urll);
+            xhr.send(data);
+     }
+     function senddatas() { 
+                const user_id_2=1;
+                const interest_type = document.getElementById('interesttype1').value;
+                const interest_subtype=document.getElementById('interestsubtype').value;
+                // console.log(typeof(user_id));
+                // console.log(typeof(interest_type));
+                // console.log(typeof(interest_subtype));
+           //console.log(interest_type);
+               // console.log(user_id_2,interest_type,interest_subtype);
+                var json = JSON.stringify({
+                      userid:`${user_id_2}`,
+                      type: `'${interest_type}'`,
+                      subtype:`'${interest_subtype}'`
+                });
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function() {
+                   if (this.readyState == 4 && this.status == 200) {
+                       console.log('hello xhr');
+                   }
+                  };
+                           
+                xhr.open("POST", 'http://localhost:3013/createuserinterest', true)
+                xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+                xhr.send(json);        
+        }
+        
+    </script>
+    <script>
+      function regst(idi){
+          //console.log(idx);
+          console.log("hello");
+        }
+    </script>
+    </body>
+</html>

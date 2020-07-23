@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/5d02a49053d10a56bd79f73f/default';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+    <style>
+
+    /*=====/* The navigation menu */
+/* Style the navbar */
+#navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+
+
+
+/* ==========================================*/
+
+/* BOXES*/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: left;
+  background-color: #f1f1f1;
+}
+
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* BOX BUTTONS  */
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #4CAF50;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+.card-img{
+  object-fit:cover;
+  width: 1840px;
+  height: 200px;
+
+}
+/* BOX BUTTONS ends  */
+
+/* ========BOXES ENDS================*/
+
+
+    </style>
+    <title>TrekkIt - Happy Trekking ! !</title>
+
+  </head>
+
+
+
+ <body>
+      
+
+    <div class ="row" id="xyz">
+  
+    </div>
+    <div class="row" id="r1">
+            
+    </div>
+  
+
+
+  <script>
+          var xhr=new XMLHttpRequest();
+          xhr.addEventListener('load',function(){
+            var k= (JSON.parse(this.responseText));
+            console.log(k);    
+            
+            var tag = document.createElement("h1");
+              var text = document.createTextNode("Your  Registered Events");
+              tag.appendChild(text);
+              document.getElementById("xyz").appendChild(tag);
+
+                var k= (JSON.parse(this.responseText));
+              //console.log(k);   
+
+              for(var i=0; i<k.length;i++){
+                  var li=document.createElement('div');
+                  li.className='column';
+                  url = "./dance.jpeg"
+                  li.innerHTML=`<div class ="card" id="card1">
+                                      <img src=`+url+` alt="Smiley face" height="200" width="400">
+                                      <p>
+                                            Hostname: `+k[i].hostname+`<br>
+                                            Eventname: `+k[i].eventname+`<br>
+                                            Event fee: `+k[i].fee+`<br>
+                                            Ishappening : `+k[i].ishappening+`
+                                      </p>
+                                  </div>`;   
+                      
+
+                  var list = document.getElementById("r1");
+                  list.insertBefore(li, list.childNodes[0]);
+            
+                 }
+
+
+
+             
+          
+          });
+          xhr.open('GET','http://localhost:3013/getregister',true);
+          xhr.send();
+        </script>
+     
+    </body>
+</html>
